@@ -27,16 +27,6 @@ void MemoryDataLayer<Dtype>::DataLayerSetUp(const vector<Blob<Dtype>*>& bottom,
   } else {
     top[0]->Reshape(batch_size_, channels_, height_, width_);
   }
-//2017-11-13 modify by lg start
-//template <typename Dtype>
-//void MemoryDataLayer<Dtype>::addreshape(const int & batch_size,const int & channels,
-//     const int & height,const int & width) {
-//  batch_size_ = batch_size;
-//  channels_   = channels;
-//  height_     = height;
-//  width_      = width;
-} 
-//2017-11-13 modify by lg end
   top[1]->Reshape(label_shape);
   added_data_.Reshape(batch_size_, channels_, height_, width_);
   added_label_.Reshape(label_shape);
@@ -47,13 +37,18 @@ void MemoryDataLayer<Dtype>::DataLayerSetUp(const vector<Blob<Dtype>*>& bottom,
   is_transformation_applied_ = false;
 }
 
+//2017-11-13 modify by lg start
 template <typename Dtype>
-void MemoryDataLayer<Dtype>::AddDatumVector(const vector<Datum>& datum_vector,const int & batch_size,const int & channels,
+void MemoryDataLayer<Dtype>::addreshape(const int & batch_size,const int & channels,
      const int & height,const int & width) {
   batch_size_ = batch_size;
   channels_   = channels;
   height_     = height;
   width_      = width;
+} 
+//2017-11-13 modify by lg end
+template <typename Dtype>
+void MemoryDataLayer<Dtype>::AddDatumVector(const vector<Datum>& datum_vector) {
   CHECK(!has_new_data_) <<
       "Can't add data until current data has been consumed.";
   size_t num = datum_vector.size();
