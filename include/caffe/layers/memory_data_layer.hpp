@@ -27,7 +27,10 @@ class MemoryDataLayer : public BaseDataLayer<Dtype> {
   virtual inline const char* type() const { return "MemoryData"; }
   virtual inline int ExactNumBottomBlobs() const { return 0; }
   virtual inline int ExactNumTopBlobs() const { return 2; }
-
+//2017-11-13 modify by lg start
+  virtual void Reshape(const int & batch_size,const int & channels,
+     const int & height,const int & width);
+//2017-11-13 modify by lg end
   virtual void AddDatumVector(const vector<Datum>& datum_vector);
 #ifdef USE_OPENCV
   virtual void AddMatVector(const vector<cv::Mat>& mat_vector,
