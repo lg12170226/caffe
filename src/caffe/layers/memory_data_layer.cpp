@@ -29,7 +29,7 @@ void MemoryDataLayer<Dtype>::DataLayerSetUp(const vector<Blob<Dtype>*>& bottom,
   }
 //2017-11-13 modify by lg start
 template <typename Dtype>
-void MemoryDataLayer<Dtype>::Reshape(const int & batch_size,const int & channels,
+void MemoryDataLayer<Dtype>::addreshape(const int & batch_size,const int & channels,
      const int & height,const int & width) {
   batch_size_ = batch_size;
   channels_   = channels;
