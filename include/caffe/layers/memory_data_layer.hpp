@@ -28,11 +28,10 @@ class MemoryDataLayer : public BaseDataLayer<Dtype> {
   virtual inline int ExactNumBottomBlobs() const { return 0; }
   virtual inline int ExactNumTopBlobs() const { return 2; }
 //2017-11-13 modify by lg start
-//  virtual void addreshape(const int & batch_size,const int & channels,
-//     const int & height,const int & width);
+  virtual void addreshape(const int & batch_size,const int & channels,
+     const int & height,const int & width);
 //2017-11-13 modify by lg end
-  virtual void AddDatumVector(const vector<Datum>& datum_vector,const int & batch_size = batch_size_,const int & channels = channels_,
-     const int & height = height_,const int & width = width_);
+  virtual void AddDatumVector(const vector<Datum>& datum_vector);
 #ifdef USE_OPENCV
   virtual void AddMatVector(const vector<cv::Mat>& mat_vector,
       const vector<int>& labels);
